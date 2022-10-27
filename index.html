@@ -15,8 +15,7 @@
         var divContainer = document.createElement("div");
         divContainer.id = node;
         document.body.appendChild(divContainer);
-        var currentDate = new Date().getTime();
-        var src = `https://talkdeskchatsdk.svc.talkdeskstg.com/talkdeskchatsdk.js?t=` + currentDate;
+        var src = `https://talkdeskchatsdk.svc.talkdeskstg.com/talkdeskchatsdk.js`;
         var script = document.createElement("script");
         var firstScriptTag = document.getElementsByTagName("script")[0];
         script.type = "text/javascript";
@@ -28,16 +27,32 @@
         script.onload = () => {
           webchat = TalkdeskChatSDK(node, props);
           webchat.init(configs);
+          /*
+           * Send custom data from your website to TalkDesk!
+           * If you would like to do it, you need to remove the following commented code and
+           * modify the webchat.setContextParam parameters to pass in the data you need.
+           */
+           /*function setContext() {
+             webchat.setContextParam({ "var1": "value1", "var2": "value2", "var3": 100 })
+           }
+           // Send data when the chat conversation is initiated
+           webchat.onConversationStart = function() {
+             setContext()
+           }
+           // Send data when the chat widget is open
+           webchat.onOpenWebchat = function() {
+             setContext()
+           }*/
         };
       })(
         window,
         document,
         "tdWebchat",
-        { flowId: "cffb68145e3f4a74be7d1a70ca07c03a", accountId: "", region: "td-us-1" },
+        { flowId: "64032158d03e499399ac5c444d08e0b0", accountId: "", region: "td-us-1" },
         { enableEmoji: true, enableUserInput: true }
       );
     </script>
-<!-- End of Talkdesk Code -->
+    <!-- End of Talkdesk Code -->
 
   </body>
 </html>
